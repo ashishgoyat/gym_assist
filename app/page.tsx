@@ -1,65 +1,114 @@
-import Image from "next/image";
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+const WORKOUT_TYPES = [
+  {
+    type: 'push',
+    label: 'PUSH',
+    description: 'Chest · Shoulders · Triceps',
+  },
+  {
+    type: 'pull',
+    label: 'PULL',
+    description: 'Back · Biceps · Rear Delts',
+  },
+  {
+    type: 'legs',
+    label: 'LEGS',
+    description: 'Quads · Hamstrings · Glutes · Calves',
+  },
+] as const
 
 export default function Home() {
+  const router = useRouter()
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-black text-white flex flex-col items-center">
+      {/* Header */}
+      <header className="anim-fade-in w-full max-w-2xl px-8 py-7 flex justify-center">
+        <span
+          className="text-xl tracking-[0.5em] text-white/80"
+          style={{ fontFamily: 'var(--font-bebas)' }}
+        >
+          GYMASSIST
+        </span>
+      </header>
+
+      <main className="flex-1 flex flex-col items-center justify-center px-8 pb-20 w-full max-w-2xl">
+        <div className="w-full">
+
+          {/* Display heading */}
+          <div
+            className="anim-fade-up mb-3 text-center"
+            style={{ animationDelay: '80ms' }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <h1
+              className="text-[clamp(68px,13vw,112px)] leading-[0.9] text-white"
+              style={{ fontFamily: 'var(--font-bebas)' }}
+            >
+              TODAY&apos;S<br />SESSION.
+            </h1>
+          </div>
+
+          {/* Subtitle */}
+          <div
+            className="anim-fade-up text-center mb-10"
+            style={{ animationDelay: '160ms' }}
+          >
+            <p className="text-[10px] text-[#494949] uppercase tracking-[0.4em]">
+              Select your workout type
+            </p>
+          </div>
+
+          {/* Gold accent line */}
+          <div
+            className="anim-fade-in mx-auto mb-10 h-px bg-[#FFC000]"
+            style={{ animationDelay: '220ms', width: '40px' }}
+          />
+
+          {/* Workout type list */}
+          <div className="flex flex-col">
+            {WORKOUT_TYPES.map(({ type, label, description }, i) => (
+              <button
+                key={type}
+                onClick={() => router.push(`/configure?type=${type}`)}
+                className="anim-fade-up group relative flex items-center justify-between py-8 border-t border-[#1a1a1a] hover:border-[#FFC000]/60 transition-colors duration-300 text-left pl-5"
+                style={{ animationDelay: `${300 + i * 110}ms` }}
+              >
+                {/* Vertical gold sweep indicator */}
+                <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#FFC000] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out" />
+
+                <div>
+                  <div
+                    className="leading-none text-white group-hover:text-[#FFC000] transition-colors duration-300"
+                    style={{
+                      fontFamily: 'var(--font-bebas)',
+                      fontSize: 'clamp(38px, 6vw, 56px)',
+                      letterSpacing: '0.06em',
+                    }}
+                  >
+                    {label}
+                  </div>
+                  <div className="text-[10px] text-[#494949] group-hover:text-[#7D7D7D] mt-2 uppercase tracking-[0.25em] transition-colors duration-300">
+                    {description}
+                  </div>
+                </div>
+
+                <span className="text-[#2a2a2a] group-hover:text-[#FFC000] transition-colors duration-300 text-lg ml-8">
+                  →
+                </span>
+              </button>
+            ))}
+
+            {/* Closing border */}
+            <div
+              className="anim-fade-in border-t border-[#1a1a1a]"
+              style={{ animationDelay: '630ms' }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
       </main>
     </div>
-  );
+  )
 }
