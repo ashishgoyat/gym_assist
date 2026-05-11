@@ -37,6 +37,14 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col items-center justify-center px-8 pb-20 w-full max-w-2xl">
         <div className="w-full">
+          <div className="anim-fade-up mb-8 flex justify-end" style={{ animationDelay: '40ms' }}>
+            <button
+              onClick={() => router.push('/history')}
+              className="text-[10px] uppercase tracking-[0.3em] px-5 py-2.5 border border-white/15 text-[#7D7D7D] hover:border-[#FFC000]/60 hover:text-[#FFC000] transition-all duration-200"
+            >
+              Saved Workouts
+            </button>
+          </div>
 
           {/* Display heading */}
           <div

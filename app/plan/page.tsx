@@ -4,19 +4,28 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { saveWorkout, WorkoutPlan } from '@/lib/storage'
 
+function getCurrentPlan(): WorkoutPlan | null {
+  if (typeof window === 'undefined') return null
+  const stored = sessionStorage.getItem('current_plan')
+  if (!stored) return null
+
+  try {
+    return JSON.parse(stored) as WorkoutPlan
+  } catch {
+    return null
+  }
+}
+
 export default function PlanPage() {
   const router = useRouter()
-  const [plan, setPlan] = useState<WorkoutPlan | null>(null)
+  const [plan] = useState<WorkoutPlan | null>(() => getCurrentPlan())
   const [saved, setSaved] = useState(false)
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('current_plan')
-    if (!stored) {
+    if (!plan) {
       router.replace('/')
-      return
     }
-    setPlan(JSON.parse(stored))
-  }, [router])
+  }, [plan, router])
 
   function handleSave() {
     if (!plan || saved) return
