@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gym Assist
 
-## Getting Started
+Gym Assist is a fitness-focused web application designed to help users manage workouts, track progress, and stay consistent with their fitness goals. The project focuses on delivering a clean user experience, responsive design, and practical gym management features.
 
-First, run the development server:
+## Tech Stack
+
+### Frontend
+
+* React / Next.js *(update according to your project)*
+* Tailwind CSS / Bootstrap *(update according to your project)*
+* TypeScript / JavaScript
+
+### Backend
+
+* Node.js / Express *(update according to your project)*
+* REST API architecture
+
+### Database
+
+* MongoDB / PostgreSQL / MySQL *(update according to your project)*
+
+## Project Structure
+
+```bash
+Gym_Assist/
+│
+├── frontend/        # Frontend application
+├── backend/         # Backend server and APIs
+├── public/          # Static assets
+├── components/      # Reusable UI components
+├── pages/           # Application pages/routes
+├── database/        # Database configuration
+└── README.md
+```
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ashishgoyat/gym_assist.git
+```
+
+Move into the project directory:
+
+```bash
+cd gym_assist
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file in the root directory and add the required environment variables.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Example:
 
-## Learn More
+```env
+PORT=5000
+DATABASE_URL=your_database_url
+JWT_SECRET=your_secret_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add screenshots or demo GIFs here.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```md
+![Home Page](./screenshots/home.png)
+```
 
-## Deploy on Vercel
+## Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* AI-based workout recommendations
+* Nutrition and calorie tracking
+* Workout analytics and charts
+* Social/community features
+* Real-time trainer support
+* Mobile application support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push the branch
+6. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+
+Developed by Ashish Goyat.
+
+GitHub: [ashishgoyat GitHub Profile](https://github.com/ashishgoyat?utm_source=chatgpt.com)
